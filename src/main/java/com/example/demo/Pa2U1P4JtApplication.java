@@ -16,6 +16,11 @@ public class Pa2U1P4JtApplication implements CommandLineRunner{
 		// TODO Auto-generated method stub
 		
 		System.out.println("Mi primer Proyecto");
+		
+		/*Spring Framework, permite la construccion
+		 * y desarrollo de aplicaciones empresairales
+		 * basadas en Spring
+		 */
 	}
 	
 	
