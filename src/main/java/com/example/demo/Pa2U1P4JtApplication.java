@@ -21,6 +21,9 @@ public class Pa2U1P4JtApplication implements CommandLineRunner{
 		 * y desarrollo de aplicaciones empresairales
 		 * basadas en Spring
 		 */
+		
+		/* Se realizo un cambio en la rama Taller3
+		 */
 	}
 	
 	
