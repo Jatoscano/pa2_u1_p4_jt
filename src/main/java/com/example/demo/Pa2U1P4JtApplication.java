@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.time.LocalDateTime;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,6 +26,15 @@ public class Pa2U1P4JtApplication implements CommandLineRunner{
 		
 		/* Se realizo un cambio en la rama Taller3
 		 */
+		
+		Profesor profesor = new Profesor();
+		profesor.setApellido("Toscano");
+		profesor.setCedula("1723457609");
+		profesor.setFechaNacimiento(LocalDateTime.now());
+		profesor.setNombre("Juan");
+		
+		
+		System.out.println(profesor);
 	}
 	
 	
