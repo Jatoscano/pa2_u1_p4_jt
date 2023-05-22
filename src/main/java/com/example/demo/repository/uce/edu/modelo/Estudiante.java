@@ -1,4 +1,4 @@
-package com.example.demo.modelo.uce.edu;
+package com.example.demo.repository.uce.edu.modelo;
 
 import java.time.LocalDateTime;
 

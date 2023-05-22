@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.modelo.uce.edu.Estudiante;
+import com.example.demo.repository.uce.edu.modelo.Estudiante;
 
 @Repository
 public class EstudianteRepoImpl implements EstudianteRepo{

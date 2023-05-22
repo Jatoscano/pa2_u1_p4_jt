@@ -1,6 +1,6 @@
 package com.example.demo.repository.uce.edu;
 
-import com.example.demo.modelo.uce.edu.Estudiante;
+import com.example.demo.repository.uce.edu.modelo.Estudiante;
 
 public interface EstudianteRepo {
 
