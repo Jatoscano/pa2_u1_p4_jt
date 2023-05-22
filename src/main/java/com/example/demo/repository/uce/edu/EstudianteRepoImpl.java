@@ -15,7 +15,7 @@ public class EstudianteRepoImpl implements EstudianteRepo{
 	@Override
 	public void insertar(Estudiante estu) {
 		// TODO Auto-generated method stub
-		
+		baseDatos.add(estu);
 	}
 
 	@Override
@@ -27,7 +27,7 @@ public class EstudianteRepoImpl implements EstudianteRepo{
 	@Override
 	public void seleccionar(String cedula) {
 		// TODO Auto-generated method stub
-		
+		return null
 	}
 
 	@Override
