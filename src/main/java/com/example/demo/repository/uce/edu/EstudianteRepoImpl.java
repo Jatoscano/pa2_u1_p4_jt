@@ -25,9 +25,9 @@ public class EstudianteRepoImpl implements EstudianteRepo{
 	}
 
 	@Override
-	public void seleccionar(String cedula) {
+	public Estudiante seleccionar(String cedula) {
 		// TODO Auto-generated method stub
-		return null
+		return null;
 	}
 
 	@Override

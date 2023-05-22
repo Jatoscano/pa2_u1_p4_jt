@@ -6,6 +6,6 @@ public interface EstudianteRepo {
 
 	public void insertar (Estudiante estu);
 	public void actualizar (Estudiante estu);
-	public void seleccionar (String cedula);
+	public Estudiante seleccionar (String cedula);
 	public void eliminar (String cedula);
 }
