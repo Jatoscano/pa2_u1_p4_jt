@@ -1,5 +1,6 @@
 package com.example.demo.banco.uce.edu.repository;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,5 +49,14 @@ public class TransferenciaRepositoryImpl implements TransferenciaRepo {
 		}
 		return transferenciaEncontrada;
 	}
+
+	@Override
+	public List<Transferencia> reporteTranferencia() {
+		
+		return baseDatos;
+	}
+
+	
+	
 
 }

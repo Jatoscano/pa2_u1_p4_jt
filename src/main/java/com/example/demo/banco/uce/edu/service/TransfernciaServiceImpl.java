@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.banco.uce.edu.repository.CuentaRepo;
@@ -22,6 +23,10 @@ public class TransfernciaServiceImpl implements TransferenciaService {
 	
 	@Autowired
 	private CuentaRepo cuentaRepo;
+	
+	@Autowired
+	@Qualifier("Internacional")
+	private MontoDebitarService montoDebitarService;
 
 	@Override
 	public void guardar(Transferencia transferencia) {
@@ -55,11 +60,13 @@ public class TransfernciaServiceImpl implements TransferenciaService {
 		//2. consultar el saldo de la uenta origen
 		BigDecimal saldoOrigen =  cuentaOrigen.getSaldo();
 		
+		BigDecimal montoDebitar = this.montoDebitarService.calcular(monto);
+		
 		//3. validar si el saldo es suficiente
 		if(monto.compareTo(saldoOrigen) <= 0) {
 			//5.  si es suficiente ir al paso 6
 			//6.  realizar la resta del saldo origen - monto
-			BigDecimal nuevoSaldoOrigen = saldoOrigen.subtract(monto);
+			BigDecimal nuevoSaldoOrigen = saldoOrigen.subtract(montoDebitar);
 			//7.  actualizar el nuevo saldo de la cuenta origen
 			cuentaOrigen.setSaldo(nuevoSaldoOrigen);
 			//8.  consultamos la cuenta de destino por el numero
