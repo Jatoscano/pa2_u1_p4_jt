@@ -2,75 +2,81 @@ package com.example.demo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.banco.uce.edu.repository.TransferenciaRepo;
-import com.example.demo.banco.uce.edu.repository.modelo.Cuenta;
+import com.example.demo.banco.uce.edu.repository.modelo.Cajero;
+import com.example.demo.banco.uce.edu.repository.modelo.Impuesto;
+import com.example.demo.banco.uce.edu.repository.modelo.Presidente;
 import com.example.demo.banco.uce.edu.repository.modelo.Transferencia;
-import com.example.demo.banco.uce.edu.service.CuentaService;
+import com.example.demo.banco.uce.edu.service.CargaSistemaService;
 import com.example.demo.banco.uce.edu.service.TransferenciaService;
-import com.example.demo.repository.uce.edu.modelo.Estudiante;
-import com.example.demo.service.uce.edu.EstudianteServices;
 
 @SpringBootApplication
 public class Pa2U1P4JtApplication implements CommandLineRunner{
-
-    @Autowired
-    private CuentaService cuentaService;
-    
-    @Autowired
-    private TransferenciaService transferenciaService;
-    
-    @Autowired
-    private TransferenciaRepo transferenciaRepo;
 	
+	
+	
+	@Autowired
+	private Cajero cajero;
+	
+	@Autowired
+	private Cajero cajero1;
+	
+	@Autowired
+	private Presidente presidente;
+	
+	@Autowired
+	private Presidente presidente1;
+	
+	@Autowired
+	private CargaSistemaService cargaSistemaService;
+	
+	@Autowired
+	private TransferenciaService transferenciaService;
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U1P4JtApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		
-		Cuenta cuenta1 = new Cuenta();
-		Cuenta cuenta2 = new Cuenta();
 	
-		// cuenta 1
-		cuenta1.setCedulaPropietario("1234");
-		cuenta1.setFechaApertura(LocalDateTime.now());
-		cuenta1.setNumero("5678");
-		cuenta1.setSaldo(new BigDecimal(200));
-		cuenta1.setTipo("A");
 		
-		// cuenta 2
-		cuenta2.setCedulaPropietario("4321");
-		cuenta2.setFechaApertura(LocalDateTime.now());
-		cuenta2.setNumero("8765");
-		cuenta2.setSaldo(new BigDecimal(100));
-		cuenta2.setTipo("A");
 		
-		//insertar
-		this.cuentaService.guardar(cuenta1);
-		this.cuentaService.guardar(cuenta2);
+		this.cajero.setApellido("Toscano");
+		this.cajero.setNombre("Juan");
+		this.cajero.setSalario(new BigDecimal(100));
+	
+		this.cajero1.setApellido("Teran");
 		
-		this.transferenciaService.realizar("5678", "8765", new BigDecimal(10));
+		System.out.println(this.cajero);
+		System.out.println(this.cajero1);
+		System.out.println(this.cajero1.getApellido());
 		
-		System.out.println("Su saldo origen actual es: "
-				+ this.cuentaService.buscarNumero("5678").getSaldo());
+		this.presidente.setApellido("Lasso");
+		this.presidente.setNombre("Memo");
+		this.presidente.setCedula("1234567890");
 		
-		System.out.println("Su saldo destino actual es: "
-				+ this.cuentaService.buscarNumero("8765").getSaldo());
+		this.presidente1.setApellido("Noboa");
 		
-		List<Transferencia> reporte = this.transferenciaRepo.reporteTranferencia();
-		for (Transferencia transferencia: reporte) {
-		System.out.println("Estado de cuenta: "+ transferencia);
-		}
+		System.out.println(this.presidente);
+		System.out.println(this.presidente1);
+		
+		
+		System.out.println("\n********Segunda parte del Taller 11**************");
+		
+		this.cargaSistemaService.cargar();
+		Transferencia transferencia = new Transferencia();
+		transferencia.setCuentaOrigen(null);
+		transferencia.setCuentaDestino(null);
+		transferencia.setFecha(LocalDateTime.now());
+		transferencia.setMonto(new BigDecimal(100));
+		transferencia.setNumero("1234");
+		this.transferenciaService.guardar(transferencia);
+	
 	}
 
 }
